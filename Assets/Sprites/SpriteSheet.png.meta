@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 389114d1b5dba1240a73b37a7414c2d5
-timeCreated: 1511993354
+timeCreated: 1512057183
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,9 @@ TextureImporter:
     21300002: Ship2
     21300004: Asteroid1
     21300006: Pulse1
+    21300008: Asteroid2
+    21300010: Asteroid3
+    21300012: Asteroid4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -141,7 +144,49 @@ TextureImporter:
         width: 9
         height: 54
       alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Asteroid2
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 214
+        width: 89
+        height: 82
+      alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Asteroid3
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 101
+        height: 84
+      alignment: 9
+      pivot: {x: 0.49396205, y: 0.53993005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Asteroid4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 120
+        height: 98
+      alignment: 9
+      pivot: {x: 0.43195638, y: 0.5349398}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
