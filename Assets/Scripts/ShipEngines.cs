@@ -6,18 +6,26 @@ public class ShipEngines : MonoBehaviour {
     public float EnginePower = 10f;
     public float SteeringPower = 1.4f;
 
-	void Start () {
+	void Start ()
+    {
         rb = GetComponent<Rigidbody2D>();
 	}
 	
-	void Update () {
+	void Update ()
+    {
+        Thrust();
+        Steer();
+    }
 
-        // Move
+    void Thrust()
+    {
         float thrustInput = Input.GetAxisRaw("Vertical");
         Vector2 thrustVector = transform.up * thrustInput * EnginePower;
         rb.AddForce(thrustVector);
+    }
 
-        // Rotate
+    void Steer()
+    {
         float steeringInput = Input.GetAxisRaw("Horizontal");
         float steeringForce = -steeringInput * SteeringPower;
         rb.AddTorque(steeringForce);
