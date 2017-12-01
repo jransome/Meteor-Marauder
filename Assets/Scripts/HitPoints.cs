@@ -3,7 +3,15 @@
 public class HitPoints : MonoBehaviour {
 
     public int StartingHitPoints;
-    public int CurrentHitPoints { get; private set; }
+
+    private int currentHitPoints = 1;
+    public int CurrentHitPoints { get { return currentHitPoints; }
+        private set
+        {
+            currentHitPoints = value;
+            if (CurrentHitPoints < 1) Die();
+        }
+    }
 
 	void Start ()
     {
@@ -23,7 +31,12 @@ public class HitPoints : MonoBehaviour {
 
     void TakeDamage(int amount)
     {
-        Debug.Log("Damaged: " + -amount + "hp");
+        Debug.Log(gameObject.name + " damaged! HP left: " + CurrentHitPoints);
         CurrentHitPoints -= amount;
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
