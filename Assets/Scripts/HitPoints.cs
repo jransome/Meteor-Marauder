@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Weapons;
+using UnityEngine;
 
 public class HitPoints : MonoBehaviour {
 
@@ -20,19 +21,31 @@ public class HitPoints : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        TakeCollisionDamage(collision);
+        HandleCollisionDamage(collision);
     }
     
-    void TakeCollisionDamage(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        HandleWeaponDamage(other);
+    }
+
+    void HandleCollisionDamage(Collision2D collision)
     {
         int kineticEnergy = (int)(0.5f * collision.otherRigidbody.mass * collision.relativeVelocity.sqrMagnitude);
         TakeDamage(kineticEnergy);
     }
 
+    void HandleWeaponDamage(Collider2D weaponCollider)
+    {
+        Weapon weapon = weaponCollider.GetComponent<Weapon>();
+        if (!weapon) return;
+        TakeDamage(weapon.Damage);
+    }
+
     void TakeDamage(int amount)
     {
-        Debug.Log(gameObject.name + " damaged! HP left: " + CurrentHitPoints);
         CurrentHitPoints -= amount;
+        Debug.Log(gameObject.name + " damaged! HP left: " + CurrentHitPoints);
     }
 
     void Die()
