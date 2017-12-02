@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxStartingVelocity: 2
   MinStartingVelocity: -2
-  StartingRotationRange: 0.3
+  MaxStartingAngularVelocity: 0.15
 --- !u!50 &495038174
 Rigidbody2D:
   serializedVersion: 4
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxStartingVelocity: 2
   MinStartingVelocity: -2
-  StartingRotationRange: 0.3
+  MaxStartingAngularVelocity: 0.15
 --- !u!114 &1007597156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,6 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 1893830524018652, guid: bb81fc029cb64ba47bac7939a54adc4a,
     type: 2}
+  ImpartShipVelocity: 0
 --- !u!1 &1475886566
 GameObject:
   m_ObjectHideFlags: 0

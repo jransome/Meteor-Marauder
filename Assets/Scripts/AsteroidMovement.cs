@@ -5,7 +5,7 @@ public class AsteroidMovement : MonoBehaviour {
     private Rigidbody2D rb;
     public float MaxStartingVelocity = 2f;
     public float MinStartingVelocity = -2f;
-    public float StartingRotationRange = 1f;
+    public float MaxStartingAngularVelocity = 1f;
 
 	void Start ()
     {
@@ -16,7 +16,7 @@ public class AsteroidMovement : MonoBehaviour {
     void CreateRandomMotion()
     {
         // Add random angular velocity
-        float steeringForce = Random.Range(-StartingRotationRange, StartingRotationRange);
+        float steeringForce = Random.Range(-MaxStartingAngularVelocity, MaxStartingAngularVelocity);
         rb.AddTorque(steeringForce, ForceMode2D.Impulse);
 
         // Add random forward velocity

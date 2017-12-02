@@ -17,5 +17,16 @@ namespace Assets.Scripts.Weapons
         {
             weaponRb.velocity += parentRigidbody.velocity;
         }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            Die();
+        }
+
+        void Die()
+        {
+            // TODO: object pooling
+            Destroy(gameObject);
+        }
     }
 }
