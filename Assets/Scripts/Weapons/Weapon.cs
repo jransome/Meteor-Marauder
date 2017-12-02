@@ -8,7 +8,7 @@ namespace Assets.Scripts.Weapons
         public int Damage = 1;
         public float CooldownPeriod = 0.1f;
 
-        protected virtual void Awake()
+        void Awake()
         {
             weaponRb = GetComponent<Rigidbody2D>();
         }

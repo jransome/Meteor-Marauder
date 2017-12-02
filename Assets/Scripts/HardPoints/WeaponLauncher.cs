@@ -8,6 +8,7 @@ namespace Assets.Scripts.HardPoints
         private float cooldownPeriod;
         private float cooldownTimer;
         private Rigidbody2D parentShipRb;
+        private Collider2D parentShipCollider;
         public GameObject WeaponPrefab;
         public bool ImpartShipVelocity = false;
 
@@ -15,6 +16,7 @@ namespace Assets.Scripts.HardPoints
         {
             cooldownPeriod = WeaponPrefab.GetComponent<Weapon>().CooldownPeriod;
             parentShipRb = GetComponentInParent<Rigidbody2D>();
+            parentShipCollider = GetComponentInParent<Collider2D>();
         }
 
         void Update()
@@ -35,10 +37,8 @@ namespace Assets.Scripts.HardPoints
         {
             // TODO: object pooling
             GameObject weapon = Instantiate(WeaponPrefab, transform.position, transform.rotation);
-            if (ImpartShipVelocity)
-            {
-                weapon.GetComponent<Weapon>().InheritParentVelocity(parentShipRb);
-            }
+            Physics2D.IgnoreCollision(weapon.GetComponent<Collider2D>(), parentShipCollider); // weapons won't collide with ship that fired them
+            if (ImpartShipVelocity) weapon.GetComponent<Weapon>().InheritParentVelocity(parentShipRb);
         }
 
         bool CanFire()
