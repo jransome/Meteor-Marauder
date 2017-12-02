@@ -7,11 +7,14 @@ namespace Assets.Scripts.HardPoints
     {
         private float cooldownPeriod;
         private float cooldownTimer;
+        private Rigidbody2D parentShipRb;
         public GameObject WeaponPrefab;
+        public bool ImpartShipVelocity = false;
 
         void Start()
         {
             cooldownPeriod = WeaponPrefab.GetComponent<Weapon>().CooldownPeriod;
+            parentShipRb = GetComponentInParent<Rigidbody2D>();
         }
 
         void Update()
@@ -23,8 +26,18 @@ namespace Assets.Scripts.HardPoints
         {
             if (CanFire())
             {
-                Instantiate(WeaponPrefab, transform.position, transform.rotation);
+                InstantiateWeaponPrefab();
                 cooldownTimer = cooldownPeriod;
+            }
+        }
+
+        void InstantiateWeaponPrefab()
+        {
+            // TODO: object pooling
+            GameObject weapon = Instantiate(WeaponPrefab, transform.position, transform.rotation);
+            if (ImpartShipVelocity)
+            {
+                weapon.GetComponent<Weapon>().InheritParentVelocity(parentShipRb);
             }
         }
 
