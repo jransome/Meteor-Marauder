@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Weapons;
 using UnityEngine;
 
-public class HitPoints : MonoBehaviour {
+public class HitPointsManager : MonoBehaviour {
 
     public int StartingHitPoints;
 

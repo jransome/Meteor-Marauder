@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 389114d1b5dba1240a73b37a7414c2d5
-timeCreated: 1512057183
+timeCreated: 1512325153
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,7 @@ TextureImporter:
     21300008: Asteroid2
     21300010: Asteroid3
     21300012: Asteroid4
+    21300014: Star1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -158,7 +159,7 @@ TextureImporter:
         width: 89
         height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,6 +188,20 @@ TextureImporter:
         height: 98
       alignment: 9
       pivot: {x: 0.43195638, y: 0.5349398}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Star1
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 653
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
