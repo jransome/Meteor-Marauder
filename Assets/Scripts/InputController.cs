@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Ship;
+using UnityEngine;
 
 public class InputController : MonoBehaviour {
 

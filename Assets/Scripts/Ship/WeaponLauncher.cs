@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Weapons;
 using UnityEngine;
 
-namespace Assets.Scripts.HardPoints
+namespace Assets.Scripts.Ship
 {
     public class WeaponLauncher : MonoBehaviour
     {
