@@ -45,7 +45,7 @@ public class HitPointsManager : MonoBehaviour {
     void TakeDamage(int amount)
     {
         CurrentHitPoints -= amount;
-        Debug.Log(gameObject.name + " damaged! HP left: " + CurrentHitPoints);
+        //Debug.Log(gameObject.name + " damaged! HP left: " + CurrentHitPoints);
     }
 
     void Die()

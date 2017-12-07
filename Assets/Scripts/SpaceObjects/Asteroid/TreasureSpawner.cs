@@ -5,12 +5,19 @@ namespace Assets.Scripts.Asteroid
 {
     public class TreasureSpawner : MonoBehaviour {
 
-	    public Treasure TreasurePrefab;
+        private bool isAppQuitting = false;
+        public Treasure TreasurePrefab;
+
+        void OnApplicationQuit()
+        {
+            isAppQuitting = true;
+        }
 
         void OnDestroy()
         {
-            SpawnTreasure();
+            if (!isAppQuitting) SpawnTreasure();
         }
+
         public void SpawnTreasure()
         {
             if (TreasurePrefab != null) Instantiate(TreasurePrefab, transform.position, transform.rotation);
