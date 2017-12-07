@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Asteroid
+namespace Assets.Scripts.SpaceObjects
 {
-    public class AsteroidMovement : MonoBehaviour {
+    public class RandomMovement : MonoBehaviour {
 
         private Rigidbody2D rb;
         public float MaxStartingVelocity = 2f;
