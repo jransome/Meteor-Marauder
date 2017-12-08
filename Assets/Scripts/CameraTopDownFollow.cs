@@ -5,6 +5,11 @@ public class CameraTopDownFollow : MonoBehaviour {
     public Transform Target;
     public float CameraDistance = 10f;
 
+    void Start()
+    {
+        GetComponentInChildren<Camera>().orthographicSize = CameraDistance;
+    }
+
     void Update ()
     {
         if (Target != null)
@@ -15,8 +20,6 @@ public class CameraTopDownFollow : MonoBehaviour {
 
     void FollowTarget()
     {
-        Vector3 targetPosition = Target.position;
-        targetPosition.z -= CameraDistance;
-        transform.position = targetPosition;
+        transform.position = Target.position;
     }
 }

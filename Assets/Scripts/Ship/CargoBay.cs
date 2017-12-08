@@ -6,13 +6,13 @@ namespace Assets.Scripts.Ship
 {
     public class CargoBay : MonoBehaviour {
 
-        private string treasureTag = "Treasure";
+        private string treasureTag = "Treasure"; // TODO: look at layer masks instead
         public int Capacity = 3;
         public List<Treasure> Cargo = new List<Treasure>();
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == treasureTag) StowTreasure(other);
+            if (other.CompareTag(treasureTag)) StowTreasure(other);
         }
 
         void StowTreasure(Collider2D treasureCollider)
@@ -21,6 +21,7 @@ namespace Assets.Scripts.Ship
             {
                 Treasure treasure = treasureCollider.GetComponent<Treasure>();
                 Cargo.Add(treasure);
+                treasure.Die();
             }
         }
     }

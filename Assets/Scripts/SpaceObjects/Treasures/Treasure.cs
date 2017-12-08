@@ -7,15 +7,7 @@ namespace Assets.Scripts.Treasures
         public string Name = "Gold";
         public int Value = 10;
 
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                Die();
-            }
-        }
-
-        void Die()
+        public void Die()
         {
             Destroy(gameObject);
         }
