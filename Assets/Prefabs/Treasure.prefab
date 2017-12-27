@@ -38,10 +38,10 @@ GameObject:
   - component: {fileID: 58294399640726560}
   - component: {fileID: 50163265935347958}
   - component: {fileID: 114572212387874826}
-  - component: {fileID: 114499218149742968}
+  - component: {fileID: 114640223364993956}
   m_Layer: 0
   m_Name: Treasure
-  m_TagString: Treasure
+  m_TagString: TreasurePickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,19 +108,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &114499218149742968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989491770959748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a6dba916f1655e478758fd0ca17a786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Gold
-  Value: 10
 --- !u!114 &114572212387874826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +122,18 @@ MonoBehaviour:
   MaxStartingVelocity: 2
   MinStartingVelocity: -2
   MaxStartingAngularVelocity: 1
+--- !u!114 &114640223364993956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989491770959748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52618a6b11ee09b4782875f96cd62e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasure: {fileID: 11400000, guid: d0412f1f0e88513458257ee5463d7e71, type: 2}
 --- !u!212 &212646485833810678
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,12 +1,11 @@
-﻿using Assets.Scripts.Treasures;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Asteroid
 {
     public class TreasureSpawner : MonoBehaviour {
 
         private bool isAppQuitting = false;
-        public Treasure TreasurePrefab;
+        public GameObject TreasurePrefab;
 
         void OnApplicationQuit()
         {

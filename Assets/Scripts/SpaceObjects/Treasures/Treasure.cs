@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Treasures
+namespace Assets.Scripts.SpaceObjects.Treasures
 {
-    public class Treasure : MonoBehaviour
+    [CreateAssetMenu(fileName = "New Treasure", menuName = "CargoBay/Item")]
+    public class Treasure : ScriptableObject
     {
-        public string Name = "Gold";
-        public int Value = 10;
-
-        public void Die()
-        {
-            Destroy(gameObject);
-        }
+        new public string name = "Gold";
+        public int value = 10;
+        public Sprite icon = null;
     }
 }

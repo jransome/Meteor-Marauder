@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Treasures;
+using Assets.Scripts.SpaceObjects;
+using Assets.Scripts.SpaceObjects.Treasures;
 using UnityEngine;
 
 namespace Assets.Scripts.Ship
 {
     public class CargoBay : MonoBehaviour {
 
-        private string treasureTag = "Treasure"; // TODO: look at layer masks instead
-        public int Capacity = 3;
-        public List<Treasure> Cargo = new List<Treasure>();
+        private string treasureTag = "TreasurePickUp"; // TODO: look at layer masks instead
+        public int capacity = 3;
+        public List<Treasure> cargo = new List<Treasure>();
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -17,11 +18,12 @@ namespace Assets.Scripts.Ship
 
         void StowTreasure(Collider2D treasureCollider)
         {
-            if(Cargo.Count < Capacity)
+            if(cargo.Count < capacity)
             {
-                Treasure treasure = treasureCollider.GetComponent<Treasure>();
-                Cargo.Add(treasure);
-                treasure.Die();
+                PickUp treasurePickup = treasureCollider.GetComponent<PickUp>();
+                Treasure treasure = treasurePickup.treasure;
+                cargo.Add(treasure);
+                treasurePickup.PickUpObject();
             }
         }
     }
