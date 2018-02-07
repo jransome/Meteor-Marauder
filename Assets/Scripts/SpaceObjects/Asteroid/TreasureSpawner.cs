@@ -1,25 +1,23 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Asteroid
-{
-    public class TreasureSpawner : MonoBehaviour {
+public class TreasureSpawner : MonoBehaviour {
 
-        private bool isAppQuitting = false;
-        public GameObject TreasurePrefab;
+    private bool isAppQuitting = false;
+    public GameObject TreasurePrefab;
 
-        void OnApplicationQuit()
-        {
-            isAppQuitting = true;
-        }
+    void OnApplicationQuit()
+    {
+        isAppQuitting = true;
+    }
 
-        void OnDestroy()
-        {
-            if (!isAppQuitting) SpawnTreasure();
-        }
+    void OnDestroy()
+    {
+        if (!isAppQuitting) SpawnTreasure();
+    }
 
-        public void SpawnTreasure()
-        {
-            if (TreasurePrefab != null) Instantiate(TreasurePrefab, transform.position, transform.rotation);
-        }
+    public void SpawnTreasure()
+    {
+        if (TreasurePrefab != null) Instantiate(TreasurePrefab, transform.position, transform.rotation);
     }
 }
+

@@ -1,32 +1,29 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Weapons
+public abstract class Weapon : MonoBehaviour
 {
-    public abstract class Weapon : MonoBehaviour
+    protected Rigidbody2D weaponRb;
+    public int Damage = 1;
+    public float CooldownPeriod = 0.1f;
+
+    void Awake()
     {
-        protected Rigidbody2D weaponRb;
-        public int Damage = 1;
-        public float CooldownPeriod = 0.1f;
+        weaponRb = GetComponent<Rigidbody2D>();
+    }
 
-        void Awake()
-        {
-            weaponRb = GetComponent<Rigidbody2D>();
-        }
+    public void InheritParentVelocity(Rigidbody2D parentRigidbody)
+    {
+        weaponRb.velocity += parentRigidbody.velocity;
+    }
 
-        public void InheritParentVelocity(Rigidbody2D parentRigidbody)
-        {
-            weaponRb.velocity += parentRigidbody.velocity;
-        }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Die();
+    }
 
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            Die();
-        }
-
-        void Die()
-        {
-            // TODO: object pooling
-            Destroy(gameObject);
-        }
+    void Die()
+    {
+        // TODO: object pooling
+        Destroy(gameObject);
     }
 }
