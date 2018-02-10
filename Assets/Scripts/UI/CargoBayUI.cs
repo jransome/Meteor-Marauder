@@ -3,18 +3,28 @@
 public class CargoBayUI : MonoBehaviour {
 
     CargoBay cargoBay;
+    CargoSlotUI[] uiSlots;
 
 	void Start () {
         cargoBay = CargoBay.instance;
         cargoBay.onTreasureChangedCallback += UpdateUI;
+
+        uiSlots = GetComponentsInChildren<CargoSlotUI>();
 	}
 
-	void Update () {
-		
-	}
-
+    // Called when cargo bay inventory is changed
     void UpdateUI()
     {
-        Debug.Log("update ui");
+        for (int i = 0; i < uiSlots.Length; i++)
+        {
+            if(i < cargoBay.cargoList.Count)
+            {
+                uiSlots[i].AddTreasure(cargoBay.cargoList[i]);
+            }
+            else
+            {
+                uiSlots[i].ClearSlot();
+            }
+        }
     }
 }
