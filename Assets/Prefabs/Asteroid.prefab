@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216426e0edc049342b9dc37005ef3725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingHitPoints: 5
+  MaxHitPoints: 20
+  StartingHitPoints: 20
 --- !u!114 &114501172592074746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62c6095ac77b8544a844e1911676081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreasurePrefab: {fileID: 114499218149742968, guid: a86215c88f84f334cb0fe56aac647f5b,
+  TreasurePrefab: {fileID: 1989491770959748, guid: a86215c88f84f334cb0fe56aac647f5b,
     type: 2}
 --- !u!114 &114913033956139354
 MonoBehaviour:
