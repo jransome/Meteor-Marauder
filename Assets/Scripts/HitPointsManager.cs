@@ -4,6 +4,9 @@ public class HitPointsManager : MonoBehaviour {
 
     public float MaxHitPoints;
     public float StartingHitPoints;
+    public float SpawnInvulnerabilityTime = 0;
+
+    private bool isInvulnerable = false;
 
     #region Properties
     private float currentHitPoints = 1f;
@@ -25,8 +28,14 @@ public class HitPointsManager : MonoBehaviour {
 
 	void Start ()
     {
-        CurrentHitPoints = StartingHitPoints;	
+        CurrentHitPoints = StartingHitPoints;
+        Invoke("MakeDestructable", SpawnInvulnerabilityTime);
 	}
+
+    void MakeDestructable()
+    {
+        isInvulnerable = true;
+    }
 
     void TakeDamage(float amount)
     {

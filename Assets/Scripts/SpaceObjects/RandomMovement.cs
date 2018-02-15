@@ -10,7 +10,7 @@ public class RandomMovement : MonoBehaviour {
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
-        CreateRandomMotion();
+         CreateRandomMotion();
 	}
 
     void CreateRandomMotion()
