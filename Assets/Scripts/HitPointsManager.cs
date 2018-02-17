@@ -6,7 +6,7 @@ public class HitPointsManager : MonoBehaviour {
     public float StartingHitPoints;
     public float SpawnInvulnerabilityTime = 0;
 
-    private bool isInvulnerable = false;
+    private bool isInvulnerable = true;
 
     #region Properties
     private float currentHitPoints = 1f;
@@ -34,12 +34,13 @@ public class HitPointsManager : MonoBehaviour {
 
     void MakeDestructable()
     {
-        isInvulnerable = true;
+        isInvulnerable = false;
     }
 
     void TakeDamage(float amount)
     {
-        CurrentHitPoints -= amount;
+        if(!isInvulnerable)
+            CurrentHitPoints -= amount;
         //Debug.Log(gameObject.name + " damaged! HP left: " + CurrentHitPoints);
     }
 
