@@ -7,11 +7,8 @@ public class AsteroidFieldGenerator : MonoBehaviour {
     public Vector3 FieldCentrePosition = new Vector3(0f, 0f, 0f);
     public Vector2 FieldDimensions = new Vector2(10f, 10f);
 
-    //private float asteroidDiameter;
-
 	void Start()
     {
-        //asteroidDiameter = AsteroidPrefab.GetComponent<CircleCollider2D>().radius;
         SpawnAsteroidField();
     }
 
@@ -32,7 +29,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
 
     private void InstantiateAsteroid(float xCoord, float yCoord)
     {
-        int randomAngle = Random.Range(0, 200);
+        int randomAngle = Random.Range(0, 360);
         Quaternion randomRotation = Quaternion.Euler(0, 0, randomAngle);
         Vector2 location = new Vector2(xCoord, yCoord);
         Instantiate(AsteroidPrefab, location, randomRotation);
