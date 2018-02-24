@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AsteroidFieldGenerator : MonoBehaviour {
@@ -8,41 +9,60 @@ public class AsteroidFieldGenerator : MonoBehaviour {
     public Vector2 FieldDimensions = new Vector2(30f, 30f);
 
     private Transform cameraTransform;
-    private Vector2 cameraPosition;
     private List<Rect> existingFields = new List<Rect>();
+    private Vector2 lastLocalFieldCentre;
+    private Vector2 fieldWidthOffset;
+    private Vector2 fieldHeightOffset;
 
-	void Start()
+    void Start()
     {
         cameraTransform = Camera.main.gameObject.transform;
-        Vector2 xOffset = Vector2.right * FieldDimensions.x;
-        Vector2 yOffset = Vector2.up * FieldDimensions.y;
+        fieldWidthOffset = Vector2.right * FieldDimensions.x;
+        fieldHeightOffset = Vector2.up * FieldDimensions.y;
+        GenerateLocalFields(cameraTransform.position);
+    }
 
-        CreateAsteroidField(cameraPosition);
-        CreateAsteroidField(cameraPosition - xOffset + yOffset); // top-left
-        CreateAsteroidField(cameraPosition + yOffset); // top
-        CreateAsteroidField(cameraPosition + xOffset + yOffset); // top-right
-        CreateAsteroidField(cameraPosition + xOffset); // right
-        CreateAsteroidField(cameraPosition + xOffset - yOffset); // bottom-right
-        CreateAsteroidField(cameraPosition - yOffset); // bottom
-        CreateAsteroidField(cameraPosition - xOffset - yOffset); // bottom-left
-        CreateAsteroidField(cameraPosition - xOffset); // left
+    private void FixedUpdate()
+    {
+        Vector2 cameraPosition = cameraTransform.position;
+        Vector2 localFieldCentre = existingFields.Find(field => field.Contains(cameraPosition)).center;
+
+        if (localFieldCentre != lastLocalFieldCentre)
+        {
+            lastLocalFieldCentre = localFieldCentre;
+            GenerateLocalFields(localFieldCentre);
+        }
+    }
+
+    private void GenerateLocalFields(Vector2 localFieldCentre)
+    {
+        List<Vector2> adjacentFieldCentres = new List<Vector2>
+        {
+            localFieldCentre,
+            localFieldCentre + fieldHeightOffset,
+            localFieldCentre - fieldHeightOffset,
+            localFieldCentre + fieldWidthOffset,
+            localFieldCentre - fieldWidthOffset,
+            localFieldCentre + fieldWidthOffset + fieldHeightOffset,
+            localFieldCentre - fieldWidthOffset - fieldHeightOffset,
+            localFieldCentre - fieldWidthOffset + fieldHeightOffset,
+            localFieldCentre + fieldWidthOffset - fieldHeightOffset,
+        };
+
+        List<Vector2> missingFieldCentres = adjacentFieldCentres.Where(afc => existingFields.All(ef => ef.center != afc)).ToList();
+
+        foreach (Vector2 missingFieldCentre in missingFieldCentres)
+        {
+            CreateAsteroidField(missingFieldCentre);
+        }
     }
 
     private void CreateAsteroidField(Vector2 centrePosition)
     {
-        Vector2 rectPosition = centrePosition - (FieldDimensions /2);
+        Vector2 rectPosition = centrePosition - (FieldDimensions / 2);
         Rect boundaryRect = new Rect(rectPosition, FieldDimensions);
         SpawnAsteroids(boundaryRect);
         existingFields.Add(boundaryRect);
-    }
-
-    private void Update()
-    {
-        cameraPosition = cameraTransform.position;
-        //Debug.Log(cameraPosition);
-        //float height = Camera.main.orthographicSize * 2;
-        //float width = height * Camera.main.aspect;
-        //Debug.Log("height - " + height + "width - " + width);
     }
 
     private void SpawnAsteroids(Rect fieldRect)
@@ -63,6 +83,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
         Instantiate(AsteroidPrefab, location, randomRotation);
     }
 
+    // For visual debugging in the editor
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
