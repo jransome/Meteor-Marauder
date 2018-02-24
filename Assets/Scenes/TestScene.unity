@@ -164,7 +164,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 35063981}
-  - component: {fileID: 35063980}
   - component: {fileID: 35063983}
   - component: {fileID: 35063985}
   - component: {fileID: 35063986}
@@ -177,40 +176,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!60 &35063980
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 35063979}
-  m_Enabled: 1
-  m_Density: 3
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.35}
-    oldSize: {x: 0.99, y: 0.75}
-    newSize: {x: 0.99, y: 0.75}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.09044886, y: 0.48749995}
-      - {x: -0.085, y: 0.48749998}
-      - {x: -0.12816966, y: 0.22909176}
-      - {x: -0.4938836, y: 0.17191207}
-      - {x: -0.47420406, y: -0.13817143}
-      - {x: -0.083408356, y: -0.26060963}
-      - {x: 0.08853257, y: -0.2606094}
-      - {x: 0.47704172, y: -0.13238025}
-      - {x: 0.49689054, y: 0.17187583}
-      - {x: 0.13185251, y: 0.2322452}
 --- !u!4 &35063981
 Transform:
   m_ObjectHideFlags: 0
@@ -222,6 +187,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1475886567}
+  - {fileID: 2143642758}
+  - {fileID: 2105021373}
   - {fileID: 1246767552}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -282,9 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216426e0edc049342b9dc37005ef3725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHitPoints: 150
-  StartingHitPoints: 150
-  SpawnInvulnerabilityTime: 0
 --- !u!114 &35063986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +394,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 343342622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -208.9, y: -221, z: 0}
+  m_LocalPosition: {x: -156.9, y: -249, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1039106575}
@@ -732,7 +696,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 35063981}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1246767553
 MonoBehaviour:
@@ -879,7 +843,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418013126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65, y: -249, z: 0}
+  m_LocalPosition: {x: 65, y: -277, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1947630579}
@@ -1299,7 +1263,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1781201122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 379.5, y: 266, z: 0}
+  m_LocalPosition: {x: 327.5, y: 294, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 343342623}
@@ -1573,3 +1537,142 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1947630578}
+--- !u!1 &2105021372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2105021373}
+  - component: {fileID: 2105021375}
+  - component: {fileID: 2105021374}
+  m_Layer: 0
+  m_Name: ShieldCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105021373
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2105021372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 35063981}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105021374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2105021372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a5adbafc080184e81c85db51659429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: SHIELD
+  MaxHitPoints: 100
+  StartingHitPoints: 100
+  SpawnInvulnerabilityTime: 0
+--- !u!58 &2105021375
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2105021372}
+  m_Enabled: 1
+  m_Density: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.1}
+  serializedVersion: 2
+  m_Radius: 0.7
+--- !u!1 &2143642757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2143642758}
+  - component: {fileID: 2143642759}
+  - component: {fileID: 2143642760}
+  m_Layer: 0
+  m_Name: HullCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143642758
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2143642757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 35063981}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2143642759
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2143642757}
+  m_Enabled: 1
+  m_Density: 3
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.35}
+    oldSize: {x: 0.99, y: 0.75}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.09044886, y: 0.48749995}
+      - {x: -0.085, y: 0.48749998}
+      - {x: -0.12816966, y: 0.22909176}
+      - {x: -0.4938836, y: 0.17191207}
+      - {x: -0.47420406, y: -0.13817143}
+      - {x: -0.083408356, y: -0.26060963}
+      - {x: 0.08853257, y: -0.2606094}
+      - {x: 0.47704172, y: -0.13238025}
+      - {x: 0.49689054, y: 0.17187583}
+      - {x: 0.13185251, y: 0.2322452}
+--- !u!114 &2143642760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2143642757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a5adbafc080184e81c85db51659429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: HULL
+  MaxHitPoints: 200
+  StartingHitPoints: 200
+  SpawnInvulnerabilityTime: 0

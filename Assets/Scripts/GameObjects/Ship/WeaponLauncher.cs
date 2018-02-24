@@ -5,7 +5,7 @@ public class WeaponLauncher : MonoBehaviour
     private float cooldownPeriod;
     private float cooldownTimer;
     private Rigidbody2D parentShipRb;
-    private Collider2D parentShipCollider;
+    private Collider2D[] parentShipColliders;
     public GameObject WeaponPrefab;
     public bool ImpartShipVelocity = false;
 
@@ -13,7 +13,7 @@ public class WeaponLauncher : MonoBehaviour
     {
         cooldownPeriod = WeaponPrefab.GetComponent<Weapon>().CooldownPeriod;
         parentShipRb = GetComponentInParent<Rigidbody2D>();
-        parentShipCollider = GetComponentInParent<Collider2D>();
+        parentShipColliders = transform.parent.GetComponentsInChildren<Collider2D>();
     }
 
     void Update()
@@ -34,7 +34,13 @@ public class WeaponLauncher : MonoBehaviour
     {
         // TODO: object pooling
         GameObject weapon = Instantiate(WeaponPrefab, transform.position, transform.rotation);
-        Physics2D.IgnoreCollision(weapon.GetComponent<Collider2D>(), parentShipCollider); // weapons won't collide with ship that fired them
+
+        // weapons won't collide with ship that fired them
+        foreach (Collider2D parentShipCollider in parentShipColliders)
+        {
+            Physics2D.IgnoreCollision(weapon.GetComponent<Collider2D>(), parentShipCollider); 
+        }
+
         if (ImpartShipVelocity) weapon.GetComponent<Weapon>().InheritParentVelocity(parentShipRb);
     }
 

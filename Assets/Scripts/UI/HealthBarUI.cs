@@ -13,6 +13,6 @@ public class HealthBarUI : MonoBehaviour {
 
     void UpdateUI()
     {
-        HealthBar.fillAmount = PlayerHitPointsManager.CurrentHealthPercent; 
+        HealthBar.fillAmount = PlayerHitPointsManager.HullHP.CurrentHealthPercent; 
     }
 }

@@ -22,7 +22,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
         GenerateLocalFields(cameraTransform.position);
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         Vector2 cameraPosition = cameraTransform.position;
         Vector2 localFieldCentre = existingFields.Find(field => field.Contains(cameraPosition)).center;
@@ -34,7 +34,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
         }
     }
 
-    private void GenerateLocalFields(Vector2 localFieldCentre)
+    void GenerateLocalFields(Vector2 localFieldCentre)
     {
         List<Vector2> adjacentFieldCentres = new List<Vector2>
         {
@@ -57,7 +57,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
         }
     }
 
-    private void CreateAsteroidField(Vector2 centrePosition)
+    void CreateAsteroidField(Vector2 centrePosition)
     {
         Vector2 rectPosition = centrePosition - (FieldDimensions / 2);
         Rect boundaryRect = new Rect(rectPosition, FieldDimensions);
@@ -65,7 +65,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
         existingFields.Add(boundaryRect);
     }
 
-    private void SpawnAsteroids(Rect fieldRect)
+    void SpawnAsteroids(Rect fieldRect)
     {
         for (int i = 0; i < AsteroidFrequency; i++)
         {
@@ -75,7 +75,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
         }
     }
 
-    private void InstantiateAsteroid(float xCoord, float yCoord)
+    void InstantiateAsteroid(float xCoord, float yCoord)
     {
         int randomAngle = Random.Range(0, 360);
         Quaternion randomRotation = Quaternion.Euler(0, 0, randomAngle);
@@ -84,7 +84,7 @@ public class AsteroidFieldGenerator : MonoBehaviour {
     }
 
     // For visual debugging in the editor
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         foreach (Rect fieldRect in existingFields)
