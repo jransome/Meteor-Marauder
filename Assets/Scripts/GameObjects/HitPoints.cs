@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HitPoints : MonoBehaviour {
 
@@ -7,11 +8,28 @@ public class HitPoints : MonoBehaviour {
     public float StartingHitPoints;
     public float SpawnInvulnerabilityTime = 0;
 
+    /// <summary>
+    /// Creates the DestroyedEvent event. This Action is equivalent to:
+    ///     public delegate void DestroyedDelegate();
+    ///     public event DestroyedDelegate DestroyedEvent; // event keyword is not strictly necessary but ensures 1) that subscriptions to this event cannot be overwritten in other classes (using = instead of +=), and 2) that other classes can't invoke this event 
+    /// </summary>
+    public Action DestroyedEvent;
+
     private float currentHitPoints;
+    private bool destroyed = false;
 
     #region Properties
     public bool IsInvulnerable { get; private set; }
-    public bool Destroyed { get; private set; }
+    public bool Destroyed
+    {
+        get { return destroyed; }
+        set
+        {
+            destroyed = value;
+            if (destroyed && DestroyedEvent != null)
+                DestroyedEvent();
+        }
+    }
 
     public float CurrentHealthPercent
     {
@@ -72,4 +90,7 @@ public class HitPoints : MonoBehaviour {
         TakeDamage(weapon.Damage);
     }
     #endregion
+
+    
+
 }
