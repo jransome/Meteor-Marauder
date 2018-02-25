@@ -1,4 +1,4 @@
-﻿public class Hull : HitPoints {
+﻿public class MainHitPoints : HitPoints {
 
     protected override void TakeDamageInDerrived(float amount)
     {

@@ -36,21 +36,23 @@ public class AsteroidFieldGenerator : MonoBehaviour {
 
     void GenerateLocalFields(Vector2 localFieldCentre)
     {
-        List<Vector2> adjacentFieldCentres = new List<Vector2>
+        List<Vector2> adjacentFieldCentres = new List<Vector2> // list of centre-points of 9-tile asteroid fields
         {
             localFieldCentre,
-            localFieldCentre + fieldHeightOffset,
-            localFieldCentre - fieldHeightOffset,
-            localFieldCentre + fieldWidthOffset,
-            localFieldCentre - fieldWidthOffset,
-            localFieldCentre + fieldWidthOffset + fieldHeightOffset,
-            localFieldCentre - fieldWidthOffset - fieldHeightOffset,
-            localFieldCentre - fieldWidthOffset + fieldHeightOffset,
-            localFieldCentre + fieldWidthOffset - fieldHeightOffset,
+            localFieldCentre + fieldHeightOffset,   // top
+            localFieldCentre - fieldHeightOffset,   // bottom
+            localFieldCentre + fieldWidthOffset,    // right
+            localFieldCentre - fieldWidthOffset,    // left
+            localFieldCentre + fieldWidthOffset + fieldHeightOffset, // top-right
+            localFieldCentre - fieldWidthOffset + fieldHeightOffset, // top-left
+            localFieldCentre + fieldWidthOffset - fieldHeightOffset, // bottom-right
+            localFieldCentre - fieldWidthOffset - fieldHeightOffset, // bottom-left
         };
 
+        // create list of missing tile centre points
         List<Vector2> missingFieldCentres = adjacentFieldCentres.Where(afc => existingFields.All(ef => ef.center != afc)).ToList();
 
+        // create a new field about these missing tile centre points
         foreach (Vector2 missingFieldCentre in missingFieldCentres)
         {
             CreateAsteroidField(missingFieldCentre);
