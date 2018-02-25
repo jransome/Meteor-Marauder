@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHitPoints: 50
   StartingHitPoints: 50
-  SpawnInvulnerabilityTime: 50000
+  SpawnInvulnerabilityTime: 0.5
 --- !u!114 &114501172592074746
 MonoBehaviour:
   m_ObjectHideFlags: 1

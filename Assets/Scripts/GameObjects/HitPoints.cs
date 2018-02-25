@@ -26,8 +26,6 @@ public abstract class HitPoints : MonoBehaviour {
                 currentHitPoints = value;
             if (CurrentHitPoints <= 0)
             {
-                Debug.Log("prop");
-
                 Destroy();
             }
         }
@@ -66,7 +64,6 @@ public abstract class HitPoints : MonoBehaviour {
     #region Collision damage
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(gameObject.name + " was impacted by " + collision.collider.name);
         HandleCollisionDamage(collision);
     }
 

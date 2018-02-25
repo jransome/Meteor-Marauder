@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Hull : HitPoints {
+﻿public class Hull : HitPoints {
 
     protected override void TakeDamageInDerrived(float amount)
     {
@@ -10,12 +8,6 @@ public class Hull : HitPoints {
     protected override void Destroy()
     {
         base.Destroy();
-        DestroyShip();
-    }
-
-    void DestroyShip()
-    {
-        Debug.Log("ship destroyed");
         Destroy(gameObject);
     }
 }
