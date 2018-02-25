@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HealthBarUI : MonoBehaviour {
 
     public Image HealthBar;
-    public HitPointsManager PlayerHitPointsManager;
+    public Hull PlayerHull;
 
     void Update()
     {
@@ -13,6 +13,6 @@ public class HealthBarUI : MonoBehaviour {
 
     void UpdateUI()
     {
-        HealthBar.fillAmount = PlayerHitPointsManager.HullHP.CurrentHealthPercent; 
+        HealthBar.fillAmount = PlayerHull.CurrentHealthPercent;
     }
 }

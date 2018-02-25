@@ -1,35 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HitPoints : MonoBehaviour {
+public abstract class HitPoints : MonoBehaviour {
 
-    public string Name;
     public float MaxHitPoints;
     public float StartingHitPoints;
     public float SpawnInvulnerabilityTime = 0;
 
-    /// <summary>
-    /// Creates the DestroyedEvent event. This Action is equivalent to:
-    ///     public delegate void DestroyedDelegate();
-    ///     public event DestroyedDelegate DestroyedEvent; // event keyword is not strictly necessary but ensures 1) that subscriptions to this event cannot be overwritten in other classes (using = instead of +=), and 2) that other classes can't invoke this event 
-    /// </summary>
-    public Action DestroyedEvent;
-
-    private float currentHitPoints;
-    private bool destroyed = false;
+    private float currentHitPoints = 1f;
 
     #region Properties
-    public bool IsInvulnerable { get; private set; }
-    public bool Destroyed
-    {
-        get { return destroyed; }
-        set
-        {
-            destroyed = value;
-            if (destroyed && DestroyedEvent != null)
-                DestroyedEvent();
-        }
-    }
+    public bool IsInvulnerable { get; set; }
+    public bool Destroyed { get; private set; }
 
     public float CurrentHealthPercent
     {
@@ -41,14 +22,22 @@ public class HitPoints : MonoBehaviour {
         get { return currentHitPoints; }
         private set
         {
-            currentHitPoints = value;
-            if (CurrentHitPoints <= 0) Destroyed = true;
+            if (CurrentHitPoints > 0)
+                currentHitPoints = value;
+            if (CurrentHitPoints <= 0)
+            {
+                Debug.Log("prop");
+
+                Destroy();
+            }
         }
     }
     #endregion
 
     void Start()
     {
+        IsInvulnerable = true;
+        Destroyed = false;
         CurrentHitPoints = StartingHitPoints;
         Invoke("MakeDestructable", SpawnInvulnerabilityTime);
     }
@@ -60,13 +49,24 @@ public class HitPoints : MonoBehaviour {
 
     void TakeDamage(float amount)
     {
-        if (!IsInvulnerable)
-            CurrentHitPoints -= amount;
+        if (IsInvulnerable)
+            return;
+
+        CurrentHitPoints -= amount;
+        TakeDamageInDerrived(amount);
+    }
+
+    protected abstract void TakeDamageInDerrived(float amount);
+
+    protected virtual void Destroy()
+    {
+        Destroyed = true;
     }
 
     #region Collision damage
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(gameObject.name + " was impacted by " + collision.collider.name);
         HandleCollisionDamage(collision);
     }
 
@@ -83,14 +83,11 @@ public class HitPoints : MonoBehaviour {
         HandleWeaponDamage(other);
     }
 
-    public void HandleWeaponDamage(Collider2D weaponCollider)
+    void HandleWeaponDamage(Collider2D weaponCollider)
     {
         Weapon weapon = weaponCollider.GetComponent<Weapon>();
         if (!weapon) return;
         TakeDamage(weapon.Damage);
     }
     #endregion
-
-    
-
 }
