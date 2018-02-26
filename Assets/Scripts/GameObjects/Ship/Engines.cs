@@ -1,23 +1,28 @@
 ﻿using UnityEngine;
 
-public class ShipEngines : MonoBehaviour {
+public class Engines : MonoBehaviour {
 
     private Rigidbody2D rb;
     public float EnginePower = 10f;
     public float SteeringPower = 1.4f;
 
+    public bool EnginesEnabled { get; set; }
     public float ThrustInput { get; set; }
     public float SteeringInput { get; set; }
 
     void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
+        EnginesEnabled = true;
 	}
 
     void FixedUpdate()
     {
-        Thrust();
-        Steer();
+        if (EnginesEnabled)
+        {
+            Thrust();
+            Steer(); 
+        }
     }
 
     void Thrust()

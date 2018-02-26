@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 389114d1b5dba1240a73b37a7414c2d5
-timeCreated: 1512325153
+timeCreated: 1519681596
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,8 @@ TextureImporter:
     21300010: Asteroid3
     21300012: Asteroid4
     21300014: Star1
+    21300016: SpriteSheet_0
+    21300018: Marauder1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -200,6 +202,34 @@ TextureImporter:
         y: 653
         width: 46
         height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 241
+        width: 22
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Marauder1
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 388
+        width: 93
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -3,7 +3,7 @@
 public class InputController : MonoBehaviour {
 
     private GameObject playerObject;
-    private ShipEngines playerShipEngines;
+    private Engines playerShipEngines;
     private WeaponsController playerShipWeapons;
     public string PlayerTagName = "Player";
 
@@ -24,7 +24,7 @@ public class InputController : MonoBehaviour {
 
     void GetShipComponents()
     {
-        playerShipEngines = playerObject.GetComponent<ShipEngines>();
+        playerShipEngines = playerObject.GetComponent<Engines>();
         playerShipWeapons = playerObject.GetComponent<WeaponsController>();
     }
 
