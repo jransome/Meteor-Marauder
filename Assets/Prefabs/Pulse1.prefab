@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4410223779279782}
   - component: {fileID: 50162911367548576}
   - component: {fileID: 61528629414138746}
-  - component: {fileID: 114054812522824700}
+  - component: {fileID: 114482003338779108}
   m_Layer: 0
   m_Name: Pulse1
   m_TagString: Untagged
@@ -117,7 +117,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.54}
   m_EdgeRadius: 0
---- !u!114 &114054812522824700
+--- !u!114 &114482003338779108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,12 +125,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1893830524018652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52854b95fe34ad46a116b0574505956, type: 3}
+  m_Script: {fileID: 11500000, guid: b047c9bb07bd8f34986f4897ddcb3b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
-  CooldownPeriod: 0.2
-  Speed: 7
+  Damage: 1
+  MinSpeed: 7
 --- !u!212 &212582542521079996
 SpriteRenderer:
   m_ObjectHideFlags: 1

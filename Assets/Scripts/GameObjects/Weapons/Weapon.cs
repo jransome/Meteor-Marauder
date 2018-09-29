@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    protected Rigidbody2D weaponRb;
     public float Damage = 1;
-    public float CooldownPeriod = 0.1f;
+    public float MinSpeed = 7f;
+    private Rigidbody2D weaponRb;
 
     void Awake()
     {
         weaponRb = GetComponent<Rigidbody2D>();
     }
 
-    public void InheritParentVelocity(Rigidbody2D parentRigidbody)
+    public void Launch(Rigidbody2D parentRigidbody)
     {
-        weaponRb.velocity += parentRigidbody.velocity;
+        float impartedVelocity = MinSpeed + Vector2.Dot(parentRigidbody.velocity, transform.up);
+        float velocity = impartedVelocity < MinSpeed ? MinSpeed : impartedVelocity;
+        weaponRb.velocity = (Vector2)transform.up * velocity;
     }
 
     void OnTriggerEnter2D(Collider2D other)

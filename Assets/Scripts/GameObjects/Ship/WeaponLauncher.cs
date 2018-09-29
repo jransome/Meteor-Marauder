@@ -2,47 +2,42 @@
 
 public class WeaponLauncher : MonoBehaviour
 {
-    private float cooldownPeriod;
     private float cooldownTimer;
     private Rigidbody2D parentShipRb;
     private Collider2D[] parentShipColliders;
     public GameObject WeaponPrefab;
-    public bool ImpartShipVelocity = false;
+    public float CooldownPeriod = 0.1f;
+
 
     void Start()
     {
-        cooldownPeriod = WeaponPrefab.GetComponent<Weapon>().CooldownPeriod;
         parentShipRb = GetComponentInParent<Rigidbody2D>();
         parentShipColliders = transform.parent.GetComponentsInChildren<Collider2D>();
     }
 
     void Update()
     {
-        Cooldown();
+        if (!CanFire()) Cooldown();
     }
 
     public void LaunchWeapon()
     {
-        if (CanFire())
-        {
-            InstantiateWeaponPrefab();
-            cooldownTimer = cooldownPeriod;
-        }
-    }
+        if (!CanFire()) return;
 
-    void InstantiateWeaponPrefab()
-    {
-        // TODO: object pooling
-        GameObject weapon = Instantiate(WeaponPrefab, transform.position, transform.rotation);
+        Weapon weapon = Instantiate(
+            WeaponPrefab,
+            transform.position,
+            transform.rotation).GetComponent<Weapon>(); // TODO: object pooling
 
-        // weapons won't collide with ship that fired them
-        // TODO: set a timeout for this and also make this a weapon responsibility?
+        // weapons won't collide with ship that fired them. TODO: set a timeout for this and also make this a weapon responsibility?
         foreach (Collider2D parentShipCollider in parentShipColliders)
         {
-            Physics2D.IgnoreCollision(weapon.GetComponent<Collider2D>(), parentShipCollider); 
+            Physics2D.IgnoreCollision(weapon.GetComponent<Collider2D>(), parentShipCollider);
         }
 
-        if (ImpartShipVelocity) weapon.GetComponent<Weapon>().InheritParentVelocity(parentShipRb);
+        weapon.Launch(parentShipRb);
+
+        cooldownTimer = CooldownPeriod;
     }
 
     bool CanFire()
@@ -52,7 +47,7 @@ public class WeaponLauncher : MonoBehaviour
 
     void Cooldown()
     {
-        if (!CanFire()) cooldownTimer -= Time.deltaTime;
+        cooldownTimer -= Time.deltaTime;
     }
 }
 
