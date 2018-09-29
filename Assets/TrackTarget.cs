@@ -15,8 +15,8 @@ public class TrackTarget : MonoBehaviour {
     void FixedUpdate()
     {
         //Vector2 direction = Target.position - transform.position;
-        angle = Vector2.SignedAngle(Target.position, transform.position);
-        Debug.Log(angle);
+        // angle = Vector2.SignedAngle(Target.position, transform.position);
+        // Debug.Log(angle);
 
     }
 

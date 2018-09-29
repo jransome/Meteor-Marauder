@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 35063979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1475886567}
@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 105200260}
   - component: {fileID: 105200258}
   - component: {fileID: 105200257}
+  - component: {fileID: 105200259}
   m_Layer: 0
   m_Name: Marauder1
   m_TagString: Untagged
@@ -293,6 +294,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnginePower: 22
   SteeringPower: 2.2
+--- !u!114 &105200259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 105200256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d106e1f1b2b688f4cb3eb51f2dacd4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 35063981}
 --- !u!50 &105200260
 Rigidbody2D:
   serializedVersion: 4
@@ -462,7 +475,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 343342622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -187.4, y: -293, z: 0}
+  m_LocalPosition: {x: -197.9, y: -300.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1039106575}
@@ -586,7 +599,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 378237544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -283, y: 308, z: 0}
+  m_LocalPosition: {x: -293.5, y: 315.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 987979702}
@@ -769,6 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTagName: Player
+  MaxSteeringThreshold: 90
 --- !u!4 &942972190
 Transform:
   m_ObjectHideFlags: 0
@@ -1252,7 +1266,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418013126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -283, y: 283, z: 0}
+  m_LocalPosition: {x: -293.5, y: 290.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1947630579}
@@ -1751,7 +1765,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1781201122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 358, y: 338, z: 0}
+  m_LocalPosition: {x: 368.5, y: 345.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 343342623}
