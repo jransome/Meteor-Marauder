@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 
-public class Shields : HitPoints {
-
+public class Shields : MonoBehaviour {
+    public HitPoints hitPoints;
     public Collider2D ShieldCollider;
     public SpriteRenderer ShieldSprite;
     public float FlashDuration = 0.3f;
 
-    protected override void TakeDamageInDerrived(float amount)
+    void Start()
+    {
+        hitPoints.OnDamaged += DamageCallback;
+        hitPoints.OnDestroyed += DestroyedCallback;
+    }
+
+    void DamageCallback(float amount)
     {
         FlashShield();
     }
 
-    protected override void Destroy()
+    void DestroyedCallback()
     {
-        base.Destroy();
         DisableShields();
     }
 

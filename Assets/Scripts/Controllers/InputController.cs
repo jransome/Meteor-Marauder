@@ -16,8 +16,8 @@ public class InputController : MonoBehaviour
 
     void GetShipComponents()
     {
-        playerShipEngines = playerObject.GetComponent<Engines>();
-        playerShipWeapons = playerObject.GetComponent<WeaponsController>();
+        playerShipEngines = playerObject.GetComponentInChildren<Engines>();
+        playerShipWeapons = playerObject.GetComponentInChildren<WeaponsController>();
     }
 
     void Update()

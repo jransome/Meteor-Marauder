@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 
-public abstract class HitPoints : MonoBehaviour {
+public class HitPoints : MonoBehaviour {
 
+    public bool IsCritical = false;
     public float MaxHitPoints;
     public float StartingHitPoints;
     public float SpawnInvulnerabilityTime = 0;
 
     private float currentHitPoints = 1f;
+
+    public delegate void DamageCallback(float amount); 
+    public event DamageCallback OnDamaged; 
+    public delegate void DestroyedCallback();
+    public event DestroyedCallback OnDestroyed; 
 
     #region Properties
     public bool IsInvulnerable { get; set; }
@@ -23,11 +29,12 @@ public abstract class HitPoints : MonoBehaviour {
         private set
         {
             if (CurrentHitPoints > 0)
-                currentHitPoints = value;
-            if (CurrentHitPoints <= 0)
             {
-                Destroy();
+                currentHitPoints = value;
+                return;
             }
+            if (OnDestroyed != null) OnDestroyed();
+            Destroy();
         }
     }
     #endregion
@@ -47,44 +54,28 @@ public abstract class HitPoints : MonoBehaviour {
 
     void TakeDamage(float amount)
     {
-        if (IsInvulnerable)
-            return;
-
         CurrentHitPoints -= amount;
-        TakeDamageInDerrived(amount);
+        if (OnDamaged != null) OnDamaged(amount);
     }
-
-    protected abstract void TakeDamageInDerrived(float amount);
 
     protected virtual void Destroy()
     {
         Destroyed = true;
+        if (IsCritical) Destroy(gameObject);
     }
-
-    #region Collision damage
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
-        HandleCollisionDamage(collision);
-    }
-
-    void HandleCollisionDamage(Collision2D collision)
-    {
+        if (Destroyed || IsInvulnerable) return;
         int kineticEnergy = (int)(0.5f * collision.otherRigidbody.mass * collision.relativeVelocity.sqrMagnitude);
         TakeDamage(kineticEnergy);
     }
-    #endregion
 
-    #region Weapon damage
     void OnTriggerEnter2D(Collider2D other)
     {
-        HandleWeaponDamage(other);
-    }
-
-    void HandleWeaponDamage(Collider2D weaponCollider)
-    {
-        Weapon weapon = weaponCollider.GetComponent<Weapon>();
+        if (Destroyed || IsInvulnerable) return;
+        Weapon weapon = other.GetComponent<Weapon>();
         if (!weapon) return;
         TakeDamage(weapon.Damage);
     }
-    #endregion
 }
