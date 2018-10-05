@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62c6095ac77b8544a844e1911676081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreasurePrefab: {fileID: 1989491770959748, guid: a86215c88f84f334cb0fe56aac647f5b,
+  TreasurePrefab: {fileID: 1115379376917082, guid: a86215c88f84f334cb0fe56aac647f5b,
     type: 2}
 --- !u!114 &114913033956139354
 MonoBehaviour:

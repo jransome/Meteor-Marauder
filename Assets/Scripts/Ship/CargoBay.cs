@@ -6,7 +6,7 @@ public class CargoBay : MonoBehaviour {
     #region Singleton
     public static CargoBay instance;
 
-    private void Awake()
+    void Awake()
     {
         if (instance != null)
         {
@@ -17,28 +17,24 @@ public class CargoBay : MonoBehaviour {
     }
     #endregion
 
+    public int Money { get; set; }
     public delegate void OnTreasureChanged();
-    public OnTreasureChanged onTreasureChangedCallback;
-
-    private string treasureTag = "TreasurePickUp"; // TODO: look at layer masks instead
+    public event OnTreasureChanged onTreasureChangedCallback;
     public int capacity = 3;
-    public List<Treasure> cargoList = new List<Treasure>();
+    public List<TreasureObject> cargoList = new List<TreasureObject>();
+    private string treasureTag = "TreasurePickup"; // TODO: look at layer masks instead
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(treasureTag))
-            StowTreasure(other);
+        if (other.CompareTag(treasureTag)) StowTreasure(other.GetComponent<TreasurePickup>());
     }
 
-    public void StowTreasure(Collider2D treasureCollider)
+    public void StowTreasure(TreasurePickup treasure)
     {
-        if (cargoList.Count >= capacity)
-            return;
+        if (cargoList.Count >= capacity) return;
 
-        PickUp treasurePickup = treasureCollider.GetComponent<PickUp>();
-        cargoList.Add(treasurePickup.PickUpObject());
+        cargoList.Add(treasure.PickUpTreasure());
 
-        if(onTreasureChangedCallback != null) // Trigger event if delegate has subscribers
-            onTreasureChangedCallback.Invoke(); 
+        if(onTreasureChangedCallback != null) onTreasureChangedCallback(); 
     }
 }

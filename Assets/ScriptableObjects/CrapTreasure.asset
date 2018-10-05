@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a6dba916f1655e478758fd0ca17a786, type: 3}
-  m_Name: Test Treasure
+  m_Name: CrapTreasure
   m_EditorClassIdentifier: 
-  name: Gold
-  value: 10
-  icon: {fileID: 21300014, guid: 389114d1b5dba1240a73b37a7414c2d5, type: 3}
+  name: Crap
+  icon: {fileID: 21300000, guid: 89a3a4dd7e2ab224c826d113185763bf, type: 3}
+  value: 2

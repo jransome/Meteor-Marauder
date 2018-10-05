@@ -3,22 +3,22 @@ using UnityEngine.UI;
 
 public class CargoSlotUI : MonoBehaviour {
 
-    public Image icon;
-    private Treasure treasure;
+    public Image Icon;
+    private TreasureObject treasure;
 
-    public void AddTreasure(Treasure newTreasure)
+    public void AddTreasure(TreasureObject newTreasure)
     {
         treasure = newTreasure;
-
-        icon.sprite = treasure.icon;
-        icon.enabled = true;
+Debug.Log(newTreasure.Icon);
+        Icon.sprite = treasure.Icon;
+        Icon.enabled = true;
     }
 
     public void ClearSlot()
     {
         treasure = null;
 
-        icon.sprite = null;
-        icon.enabled = false;
+        Icon.sprite = null;
+        Icon.enabled = false;
     }
 }
