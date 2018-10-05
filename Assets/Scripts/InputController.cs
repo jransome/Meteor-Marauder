@@ -42,7 +42,9 @@ public class InputController : MonoBehaviour
         float thrustInput = Input.GetAxisRaw("Vertical");
         playerShipEngines.ThrustInput = thrustInput;
 
-        // float steeringInput = Mathf.Clamp(Input.GetAxisRaw("Horizontal") + MouseSteeringInput(), -1f, 1f);
+        float strafingInput = Input.GetAxisRaw("Horizontal");
+        playerShipEngines.StrafingInput = strafingInput;
+
         float steeringInput = MouseSteeringInput();
         playerShipEngines.SteeringInput = steeringInput;
     }
