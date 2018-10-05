@@ -3,7 +3,7 @@
     {
         "**/.DS_Store":true,
         "**/.git":true,
-        "**/.gitignore":true,
+        "**/.gitignore":false,
         "**/.gitmodules":true,
         "**/*.booproj":true,
         "**/*.pidb":true,
@@ -36,7 +36,7 @@
         "**/*.MA":true,
         "**/*.obj":true,
         "**/*.OBJ":true,
-        "**/*.asset":true,
+        "**/*.asset":false,
         "**/*.cubemap":true,
         "**/*.flare":true,
         "**/*.mat":true,

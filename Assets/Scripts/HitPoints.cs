@@ -14,7 +14,6 @@ public class HitPoints : MonoBehaviour {
     public delegate void DestroyedCallback();
     public event DestroyedCallback OnDestroyed; 
 
-    #region Properties
     public bool IsInvulnerable { get; set; }
     public bool Destroyed { get; private set; }
 
@@ -37,7 +36,6 @@ public class HitPoints : MonoBehaviour {
             Destroy();
         }
     }
-    #endregion
 
     void Start()
     {
